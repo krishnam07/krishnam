@@ -16,7 +16,7 @@ This workspace now includes a backend API and SQLite database in `backend/`.
 1. Install mobile dependencies:
 
 ```bash
-cd mobile-app
+cd 
 npm install
 ```
 
@@ -39,15 +39,15 @@ Option A (recommended): create `.env` in `mobile-app/` from `.env.example` and s
 Windows PowerShell:
 
 ```powershell
-$env:EXPO_PUBLIC_API_URL = "http://YOUR_LOCAL_IP:5000/api"
+$env:EXPO_PUBLIC_API_URL = "http://YOUR_LOCAL_IP:5005/api"
 ```
 
-Example value: `http://192.168.1.10:5000/api`
+Example value: `http://192.168.1.10:5005/api`
 
 Notes:
 
-- Android emulator fallback is `http://10.0.2.2:5000/api`
-- iOS simulator/local web fallback is `http://localhost:5000/api`
+- Android emulator fallback is `http://10.0.2.2:5005/api`
+- iOS simulator/local web fallback is `http://localhost:5005/api`
 - Physical devices must use your machine LAN IP
 
 5. Start Expo:
