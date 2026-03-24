@@ -6,7 +6,7 @@ import {
   QRScreen,
   ScannerScreen,
   CustomizeQrScreen,
-} from "./src/pages";
+} from "../pages";
 
 export const routes = [
   {

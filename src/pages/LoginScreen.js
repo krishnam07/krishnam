@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Alert, Pressable, Text, TextInput, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { appStyles, colors } from "../styles";
-import { api } from "../services/api";
-import { setSession } from "../services/authStorage";
+
+import { api, setSession } from "../services";
 
 export const LoginScreen = ({ navigation }) => {
   const [identifier, setIdentifier] = useState("");

@@ -2,9 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Alert, Pressable, ScrollView, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import QRCode from "react-native-qrcode-svg";
+
 import { appStyles, colors } from "../styles";
-import { api, clearSession, getToken, getUser } from "../services";
-import { buildUserQrPayload, maskNumber } from "../services";
+import {
+  buildUserQrPayload,
+  maskNumber,
+  api,
+  clearSession,
+  getToken,
+  getUser,
+} from "../services";
 
 const brandLogo = require("../assets/kd.png");
 

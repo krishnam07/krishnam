@@ -11,9 +11,9 @@ import {
   View,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+
 import { appStyles, colors } from "../styles";
-import { api, API_BASE_URL } from "../services";
-import { setSession } from "../services";
+import { setSession, api, API_BASE_URL } from "../services";
 
 export const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState("");
