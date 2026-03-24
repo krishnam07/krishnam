@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Alert,
   KeyboardAvoidingView,
@@ -9,33 +9,38 @@ import {
   Text,
   TextInput,
   View,
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { appStyles, colors } from '../styles/theme';
-import { api, API_BASE_URL } from '../services/api';
-import { setSession } from '../services/authStorage';
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { appStyles, colors } from "../styles";
+import { api, API_BASE_URL } from "../services";
+import { setSession } from "../services";
 
-export default function RegisterScreen({ navigation }) {
-  const [name, setName] = useState('');
-  const [contactNumber, setContactNumber] = useState('');
-  const [emergencyContact, setEmergencyContact] = useState('');
+export const RegisterScreen = ({ navigation }) => {
+  const [name, setName] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
+  const [emergencyContact, setEmergencyContact] = useState("");
   const [allowEmergency, setAllowEmergency] = useState(true);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const passwordLengthOk = password.length >= 6;
   const hasLetter = /[A-Za-z]/.test(password);
   const hasDigit = /\d/.test(password);
   const hasSpecial = /[^A-Za-z0-9]/.test(password);
 
-  const strengthScore = [passwordLengthOk, hasLetter, hasDigit, hasSpecial].filter(Boolean).length;
+  const strengthScore = [
+    passwordLengthOk,
+    hasLetter,
+    hasDigit,
+    hasSpecial,
+  ].filter(Boolean).length;
 
   function getStrengthLabel() {
-    if (!password) return 'Strength: -';
-    if (strengthScore <= 1) return 'Strength: Weak';
-    if (strengthScore <= 3) return 'Strength: Medium';
-    return 'Strength: Strong';
+    if (!password) return "Strength: -";
+    if (strengthScore <= 1) return "Strength: Weak";
+    if (strengthScore <= 3) return "Strength: Medium";
+    return "Strength: Strong";
   }
 
   async function handleRegister() {
@@ -45,37 +50,49 @@ export default function RegisterScreen({ navigation }) {
     const normalizedEmail = email.trim();
 
     if (!normalizedName || !normalizedContact || !password) {
-      Alert.alert('Missing fields', 'Name, contact number and password are required');
+      Alert.alert(
+        "Missing fields",
+        "Name, contact number and password are required",
+      );
       return;
     }
 
     if (!/^\d{10}$/.test(normalizedContact)) {
-      Alert.alert('Invalid contact', 'Contact number must be exactly 10 digits');
+      Alert.alert(
+        "Invalid contact",
+        "Contact number must be exactly 10 digits",
+      );
       return;
     }
 
     if (normalizedEmergency && !/^\d{10}$/.test(normalizedEmergency)) {
-      Alert.alert('Invalid emergency contact', 'Emergency contact number must be exactly 10 digits');
+      Alert.alert(
+        "Invalid emergency contact",
+        "Emergency contact number must be exactly 10 digits",
+      );
       return;
     }
 
-    if (normalizedEmail && !normalizedEmail.includes('@')) {
-      Alert.alert('Invalid email', 'Please enter a valid email');
+    if (normalizedEmail && !normalizedEmail.includes("@")) {
+      Alert.alert("Invalid email", "Please enter a valid email");
       return;
     }
 
     if (password.length < 6) {
-      Alert.alert('Weak password', 'Password must be at least 6 characters long');
+      Alert.alert(
+        "Weak password",
+        "Password must be at least 6 characters long",
+      );
       return;
     }
 
     if (password !== confirmPassword) {
-      Alert.alert('Password mismatch', 'Confirm password does not match');
+      Alert.alert("Password mismatch", "Confirm password does not match");
       return;
     }
 
     try {
-      const { data } = await api.post('/auth/register', {
+      const { data } = await api.post("/auth/register", {
         name: normalizedName,
         contactNumber: normalizedContact,
         email: normalizedEmail,
@@ -87,18 +104,18 @@ export default function RegisterScreen({ navigation }) {
         emergencyContact: normalizedEmergency,
         allowEmergency,
       });
-      Alert.alert('Registered', 'Account created successfully');
-      navigation.replace('Profile');
+      Alert.alert("Registered", "Account created successfully");
+      navigation.replace("Profile");
     } catch (err) {
       const apiError = err?.response?.data?.error;
       if (apiError) {
-        Alert.alert('Register failed', apiError);
+        Alert.alert("Register failed", apiError);
         return;
       }
 
       Alert.alert(
-        'Register failed',
-        `Unable to reach backend at ${API_BASE_URL}. Start backend and use your LAN IP in EXPO_PUBLIC_API_URL for real devices.`
+        "Register failed",
+        `Unable to reach backend at ${API_BASE_URL}. Start backend and use your LAN IP in EXPO_PUBLIC_API_URL for real devices.`,
       );
     }
   }
@@ -106,7 +123,7 @@ export default function RegisterScreen({ navigation }) {
   return (
     <KeyboardAvoidingView
       style={{ flex: 1, backgroundColor: colors.bg }}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={18}
     >
       <ScrollView
@@ -118,7 +135,9 @@ export default function RegisterScreen({ navigation }) {
           <Text style={appStyles.title}>Register</Text>
           <Text style={appStyles.subtitle}>Compact mobile signup</Text>
 
-          <Text style={[appStyles.subtitle, { marginTop: 12 }]}>Full Name *</Text>
+          <Text style={[appStyles.subtitle, { marginTop: 12 }]}>
+            Full Name *
+          </Text>
           <TextInput
             style={[appStyles.input, { marginTop: 6 }]}
             placeholder="Full Name"
@@ -152,13 +171,24 @@ export default function RegisterScreen({ navigation }) {
             returnKeyType="next"
           />
 
-          <View style={[appStyles.row, { alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }]}> 
-            <Text style={[appStyles.subtitle, { flex: 1 }]}>Allow emergency contact call</Text>
+          <View
+            style={[
+              appStyles.row,
+              {
+                alignItems: "center",
+                justifyContent: "space-between",
+                marginBottom: 10,
+              },
+            ]}
+          >
+            <Text style={[appStyles.subtitle, { flex: 1 }]}>
+              Allow emergency contact call
+            </Text>
             <Switch
               value={allowEmergency}
               onValueChange={setAllowEmergency}
-              thumbColor={allowEmergency ? colors.success : '#9ca3af'}
-              trackColor={{ false: '#334155', true: '#065f46' }}
+              thumbColor={allowEmergency ? colors.success : "#9ca3af"}
+              trackColor={{ false: "#334155", true: "#065f46" }}
             />
           </View>
 
@@ -190,7 +220,11 @@ export default function RegisterScreen({ navigation }) {
               {
                 marginTop: -4,
                 marginBottom: 8,
-                color: password ? (passwordLengthOk ? '#86efac' : '#fca5a5') : colors.subtext,
+                color: password
+                  ? passwordLengthOk
+                    ? "#86efac"
+                    : "#fca5a5"
+                  : colors.subtext,
               },
             ]}
           >
@@ -209,9 +243,15 @@ export default function RegisterScreen({ navigation }) {
             onSubmitEditing={handleRegister}
           />
 
-          <Text style={[appStyles.subtitle, { marginBottom: 12 }]}>We store your number securely. OTP verification will be used for mobile verification.</Text>
+          <Text style={[appStyles.subtitle, { marginBottom: 12 }]}>
+            We store your number securely. OTP verification will be used for
+            mobile verification.
+          </Text>
 
-          <Pressable style={[appStyles.button, { backgroundColor: colors.warning }]} onPress={handleRegister}>
+          <Pressable
+            style={[appStyles.button, { backgroundColor: colors.warning }]}
+            onPress={handleRegister}
+          >
             <Ionicons name="person-add" size={14} color="#fff" />
             <Text style={appStyles.buttonText}>Create Account</Text>
           </Pressable>
@@ -219,4 +259,4 @@ export default function RegisterScreen({ navigation }) {
       </ScrollView>
     </KeyboardAvoidingView>
   );
-}
+};
