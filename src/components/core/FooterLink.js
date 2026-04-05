@@ -1,9 +1,9 @@
 import { Pressable, Text } from "react-native";
 import { theme } from "../../styles";
 
-export const FooterLink = ({ label }) => {
+export const FooterLink = ({ label, onPress }) => {
   return (
-    <Pressable>
+    <Pressable onPress={onPress}>
       {({ pressed }) => (
         <Text
           style={{

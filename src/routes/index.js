@@ -1,11 +1,12 @@
 import {
+  ContactUs,
+  CustomizeQrScreen,
   HomeScreen,
-  Signin,
-  Signup,
   ProfileScreen,
   QRScreen,
   ScannerScreen,
-  CustomizeQrScreen,
+  Signin,
+  Signup,
 } from "../pages";
 
 export const routes = [
@@ -36,5 +37,9 @@ export const routes = [
   {
     name: "Scanner",
     component: ScannerScreen,
+  },
+  {
+    name: "ContactUs",
+    component: ContactUs,
   },
 ];

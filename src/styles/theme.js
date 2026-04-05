@@ -481,4 +481,28 @@ export const styles = StyleSheet.create({
     ...typography.titleMd,
     color: theme.colors.primary,
   },
+  textArea: {
+    backgroundColor: theme.colors.surfaceHighest,
+    borderRadius: theme.radius.lg,
+    paddingHorizontal: theme.spacing.md,
+    paddingVertical: theme.spacing.sm,
+    color: theme.colors.onSurface,
+    minHeight: 120,
+    textAlignVertical: "top", // important for Android
+  },
+
+  contactInfo: {
+    alignItems: "center",
+    gap: theme.spacing.xs,
+  },
+
+  contactText: {
+    ...typography.bodyLg,
+    color: theme.colors.onSurfaceVariant,
+  },
+
+  contactLink: {
+    ...typography.titleMd,
+    color: theme.colors.primary,
+  },
 });

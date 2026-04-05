@@ -1,11 +1,14 @@
 import React from "react";
 import { View, Text, Pressable } from "react-native";
 import { Search } from "lucide-react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { styles, theme } from "../../styles";
 import { FooterLink } from "../core";
 
 export const Footer = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.footer}>
       {/* Brand */}
@@ -25,12 +28,15 @@ export const Footer = () => {
         <FooterLink label="Privacy Policy" />
         <FooterLink label="Terms of Service" />
         <FooterLink label="Help Center" />
-        <FooterLink label="Contact Us" />
+        <FooterLink
+          label="Contact Us"
+          onPress={() => navigation.navigate("ContactUs")}
+        />
       </View>
 
       {/* Bottom */}
       <Text style={styles.footerBottom}>
-        © 2024 Find My Things. All rights reserved.
+        © 2026 Find My Things. All rights reserved.
       </Text>
     </View>
   );

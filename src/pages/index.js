@@ -1,3 +1,4 @@
+export * from "./ContactUs";
 export * from "./CustomizeQrScreen";
 export * from "./HomeScreen";
 export * from "./ProfileScreen";
