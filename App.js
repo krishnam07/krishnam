@@ -17,6 +17,7 @@ export default function App() {
           headerTintColor: "#e6eef8",
           headerTitleAlign: "left",
           headerTitle: () => <BrandHeader navigation={navigation} />,
+          headerTitleContainerStyle: { left: 0, right: 0 },
           contentStyle: { backgroundColor: "#0f1724" },
         })}
       >

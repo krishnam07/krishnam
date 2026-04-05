@@ -1,15 +1,23 @@
 import { StyleSheet } from "react-native";
 
+/* =========================
+   🎨 TYPOGRAPHY (Editorial)
+========================= */
 export const typography = {
   displayLg: {
     fontSize: 56,
-    letterSpacing: -1,
+    letterSpacing: -1.5,
     fontWeight: "700",
   },
 
   headlineLg: {
     fontSize: 32,
     fontWeight: "600",
+  },
+
+  titleMd: {
+    fontSize: 20,
+    fontWeight: "700",
   },
 
   bodyLg: {
@@ -19,33 +27,36 @@ export const typography = {
 
   labelMd: {
     fontSize: 12,
-    color: "#444655",
+    fontWeight: "500",
   },
 };
 
+/* =========================
+   🎨 COLORS (Strict DS)
+========================= */
 export const theme = {
   colors: {
-    // Base
+    /* Base */
     surface: "#f7f9fb",
 
-    // Surface layers
+    /* Surface Layers (NO-LINE RULE CORE) */
     surfaceLow: "#f2f4f6",
     surfaceLowest: "#ffffff",
     surfaceHigh: "#e6e8ea",
     surfaceHighest: "#e0e3e5",
 
-    // Primary (Lost state)
+    /* Brand */
     primary: "#2346d5",
     primaryContainer: "#4361ee",
 
-    // Success (Found state)
+    /* Success */
     tertiary: "#006431",
 
-    // Text
+    /* Text */
     onSurface: "#191c1e",
     onSurfaceVariant: "#444655",
 
-    // Error
+    /* Error */
     errorContainer: "#ffdad6",
   },
 
@@ -61,20 +72,33 @@ export const theme = {
   radius: {
     sm: 8,
     md: 16,
-    lg: 32,
+    lg: 24,
+    xl: 32,
     full: 9999,
   },
 };
 
+/* =========================
+   🧱 GLOBAL STYLES
+========================= */
 export const styles = StyleSheet.create({
+  /* Screen */
   container: {
     flex: 1,
     backgroundColor: theme.colors.surface,
   },
 
+  content: {
+    padding: theme.spacing.lg,
+    gap: theme.spacing.xl,
+  },
+
+  /* =========================
+     HEADER (Glass Ready)
+  ========================= */
   header: {
     height: 80,
-    paddingHorizontal: 20,
+    paddingHorizontal: theme.spacing.lg,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -84,152 +108,128 @@ export const styles = StyleSheet.create({
   logoRow: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
+    gap: theme.spacing.sm,
   },
 
   logoIcon: {
     backgroundColor: "rgba(35,70,213,0.1)",
-    padding: 8,
-    borderRadius: 12,
+    padding: theme.spacing.sm,
+    borderRadius: theme.radius.md,
   },
 
   logoText: {
-    fontSize: 20,
-    fontWeight: "800",
+    ...typography.headlineLg,
     color: theme.colors.primary,
   },
 
-  menu: {
-    padding: 20,
-    backgroundColor: theme.colors.surface,
-    gap: 20,
-  },
-
-  menuItem: {
-    fontSize: 18,
-    fontWeight: "600",
-  },
-
-  menuButton: {
-    padding: 16,
-    borderRadius: 999,
-    alignItems: "center",
-  },
-
-  menuButtonText: {
-    color: "white",
-    fontWeight: "700",
-  },
-
-  content: {
-    padding: 20,
-    gap: 40,
-  },
-
+  /* =========================
+     HERO
+  ========================= */
   hero: {
-    gap: 20,
+    gap: theme.spacing.lg,
   },
 
   heading: {
-    fontSize: 36,
-    fontWeight: "800",
+    ...typography.displayLg,
     color: theme.colors.onSurface,
   },
 
   subText: {
-    fontSize: 16,
+    ...typography.bodyLg,
     color: theme.colors.onSurfaceVariant,
   },
 
   buttonRow: {
     flexDirection: "row",
-    gap: 10,
+    gap: theme.spacing.sm,
   },
 
+  /* =========================
+     BUTTONS
+  ========================= */
   primaryBtn: {
-    padding: 14,
-    borderRadius: 999,
-    flex: 1,
+    paddingVertical: 14,
+    borderRadius: theme.radius.full,
     alignItems: "center",
+    flex: 1,
   },
 
   primaryText: {
-    color: "white",
+    color: "#fff",
     fontWeight: "700",
   },
 
   secondaryBtn: {
     backgroundColor: theme.colors.surfaceLow,
-    padding: 14,
-    borderRadius: 999,
-    flex: 1,
+    paddingVertical: 14,
+    borderRadius: theme.radius.full,
     alignItems: "center",
+    flex: 1,
   },
 
+  /* =========================
+     IMAGE
+  ========================= */
   heroImage: {
     width: "100%",
     height: 250,
-    borderRadius: 24,
+    borderRadius: theme.radius.xl,
   },
 
-  section: {
-    gap: 20,
-  },
-
-  sectionTitle: {
-    fontSize: 28,
-    fontWeight: "800",
-    color: theme.colors.onSurface,
-  },
-
-  cardWrapper: {
-    backgroundColor: theme.colors.surfaceLow,
-    padding: 10,
-    borderRadius: 24,
-  },
-
-  card: {
-    backgroundColor: theme.colors.surfaceLowest,
-    padding: 20,
-    borderRadius: 24,
-  },
-
-  cardTitle: {
-    fontSize: 20,
-    fontWeight: "700",
-    color: theme.colors.onSurface,
-  },
-
-  cardDesc: {
-    fontSize: 14,
-    color: theme.colors.onSurfaceVariant,
-  },
-
+  /* =========================
+     SECTION (NO DIVIDERS)
+  ========================= */
   section: {
     paddingVertical: theme.spacing.xl,
-    gap: theme.spacing.xl, // spacing replaces dividers
+    gap: theme.spacing.xl,
   },
 
-  header: {
+  sectionHeader: {
     alignItems: "center",
     gap: theme.spacing.sm,
   },
 
-  title: {
-    fontSize: 32,
-    fontWeight: "800",
+  sectionTitle: {
+    ...typography.headlineLg,
     color: theme.colors.onSurface,
   },
 
-  subtitle: {
-    fontSize: 16,
+  sectionSubtitle: {
+    ...typography.bodyLg,
     color: theme.colors.onSurfaceVariant,
     textAlign: "center",
-    maxWidth: 300,
   },
 
+  /* =========================
+     CARD SYSTEM (Layered)
+  ========================= */
+  cardWrapper: {
+    backgroundColor: theme.colors.surfaceLow,
+    padding: theme.spacing.sm,
+    borderRadius: theme.radius.lg,
+  },
+
+  card: {
+    backgroundColor: theme.colors.surfaceLowest,
+    padding: theme.spacing.lg,
+    borderRadius: theme.radius.lg,
+  },
+
+  cardTitle: {
+    ...typography.titleMd,
+    color: theme.colors.onSurface,
+  },
+
+  cardDesc: {
+    ...typography.bodyLg,
+    color: theme.colors.onSurfaceVariant,
+  },
+
+  /* =========================
+     STEP SYSTEM
+  ========================= */
   stepsContainer: {
-    gap: theme.spacing.xl, // ❌ no divider line
+    gap: theme.spacing.xl,
   },
 
   step: {
@@ -238,24 +238,22 @@ export const styles = StyleSheet.create({
   },
 
   stepIconWrapper: {
-    // creates layering effect instead of border
     backgroundColor: theme.colors.surfaceLow,
-    padding: 8,
+    padding: theme.spacing.sm,
     borderRadius: theme.radius.lg,
   },
 
   stepIcon: {
     width: 48,
     height: 48,
-    borderRadius: 16,
+    borderRadius: theme.radius.md,
     backgroundColor: theme.colors.primary,
     alignItems: "center",
     justifyContent: "center",
   },
 
   stepNumber: {
-    color: "white",
-    fontSize: 18,
+    color: "#fff",
     fontWeight: "700",
   },
 
@@ -265,65 +263,24 @@ export const styles = StyleSheet.create({
   },
 
   stepTitle: {
-    fontSize: 20,
-    fontWeight: "700",
+    ...typography.titleMd,
     color: theme.colors.onSurface,
   },
 
   stepDescription: {
-    fontSize: 14,
+    ...typography.bodyLg,
     color: theme.colors.onSurfaceVariant,
     textAlign: "center",
-    lineHeight: 20,
-    maxWidth: 260,
   },
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: theme.colors.bg,
-  },
-  card: {
-    backgroundColor: theme.colors.surfaceLowest,
-    borderRadius: 16,
-    padding: 16,
-    marginBottom: 12,
-  },
-  title: {
-    fontSize: 22,
-    fontWeight: "700",
-    color: theme.colors.text,
-    marginBottom: 4,
-  },
-  subtitle: {
-    fontSize: 13,
-    color: theme.colors.subtext,
-  },
+
+  /* =========================
+     INPUT (Soft Inset)
+  ========================= */
   input: {
-    backgroundColor: theme.colors.surfaceLow,
-    borderRadius: 10,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    color: theme.colors.text,
-    fontSize: 14,
-    marginBottom: 10,
-  },
-  button: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 6,
-    paddingVertical: 10,
-    paddingHorizontal: 18,
-    borderRadius: 999,
-    backgroundColor: theme.colors.primary,
-  },
-  buttonText: {
-    color: theme.colors.onPrimary,
-    fontWeight: "700",
-    fontSize: 14,
-  },
-  row: {
-    flexDirection: "row",
-    gap: 10,
+    backgroundColor: theme.colors.surfaceHighest,
+    borderRadius: theme.radius.lg,
+    paddingHorizontal: theme.spacing.md,
+    paddingVertical: theme.spacing.sm,
+    color: theme.colors.onSurface,
   },
 });
