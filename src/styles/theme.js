@@ -96,35 +96,6 @@ export const styles = StyleSheet.create({
   },
 
   /* =========================
-     HEADER (Glass Ready)
-  ========================= */
-  header: {
-    height: 80,
-    paddingHorizontal: theme.spacing.lg,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "rgba(247,249,251,0.8)",
-  },
-
-  logoRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: theme.spacing.sm,
-  },
-
-  logoIcon: {
-    backgroundColor: "rgba(35,70,213,0.1)",
-    padding: theme.spacing.sm,
-    borderRadius: theme.radius.md,
-  },
-
-  logoText: {
-    ...typography.headlineLg,
-    color: theme.colors.primary,
-  },
-
-  /* =========================
      HERO
   ========================= */
   hero: {
@@ -189,20 +160,9 @@ export const styles = StyleSheet.create({
     gap: theme.spacing.xl,
   },
 
-  sectionHeader: {
-    alignItems: "center",
-    gap: theme.spacing.sm,
-  },
-
   sectionTitle: {
     ...typography.headlineLg,
     color: theme.colors.onSurface,
-  },
-
-  sectionSubtitle: {
-    ...typography.bodyLg,
-    color: theme.colors.onSurfaceVariant,
-    textAlign: "center",
   },
 
   /* =========================
@@ -233,10 +193,6 @@ export const styles = StyleSheet.create({
   /* =========================
      STEP SYSTEM
   ========================= */
-  stepsContainer: {
-    gap: theme.spacing.xl,
-  },
-
   step: {
     alignItems: "center",
     gap: theme.spacing.lg,
@@ -278,18 +234,6 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  /* =========================
-     INPUT (Soft Inset)
-  ========================= */
-  input: {
-    backgroundColor: theme.colors.surfaceHighest,
-    borderRadius: theme.radius.lg,
-    paddingHorizontal: theme.spacing.md,
-    paddingVertical: theme.spacing.sm,
-    color: theme.colors.onSurface,
-  },
-
-  // asdf
   ctaWrapper: {
     marginTop: theme.spacing.xl,
   },
@@ -504,5 +448,91 @@ export const styles = StyleSheet.create({
   contactLink: {
     ...typography.titleMd,
     color: theme.colors.primary,
+  },
+
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+  },
+
+  logoRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+
+  logoIcon: {
+    backgroundColor: "#e6eef8",
+    padding: 6,
+    borderRadius: 10,
+  },
+
+  logoText: {
+    color: "#e6eef8",
+    fontSize: 15,
+    fontWeight: "700",
+  },
+
+  logoSub: {
+    color: "#cfe6ff",
+    fontSize: 10,
+  },
+
+  menuBtn: {
+    padding: 6,
+  },
+
+  backdrop: {
+    flex: 1,
+    backgroundColor: "rgba(25,28,30,0.4)",
+    alignItems: "flex-end",
+  },
+
+  drawer: {
+    width: 260,
+    height: "100%",
+    backgroundColor: theme.colors.surfaceLow,
+    paddingTop: 56,
+    paddingHorizontal: 16,
+    paddingBottom: 32,
+    gap: 8,
+  },
+
+  drawerHeader: {
+    marginBottom: 24,
+    gap: 4,
+  },
+
+  drawerTitle: {
+    color: theme.colors.onSurface,
+    fontSize: 16,
+    fontWeight: "700",
+  },
+
+  drawerSub: {
+    color: theme.colors.primary,
+    fontSize: 12,
+  },
+
+  navItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+  },
+
+  navLabel: {
+    color: theme.colors.onSurface,
+    fontSize: 15,
+    fontWeight: "500",
+  },
+
+  logoutItem: {
+    marginTop: 16,
   },
 });

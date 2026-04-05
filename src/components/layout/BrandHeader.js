@@ -20,10 +20,18 @@ import {
   UserPlus,
   LogOut,
 } from "lucide-react-native";
-import { getToken, getUser, clearSession } from "../../services";
-import { theme } from "../../styles";
 
-// Routes shown when user is NOT logged in
+import { getToken, getUser, clearSession } from "../../services";
+import { theme, styles } from "../../styles";
+
+//
+// 🔥 MOCK MODE
+// "auth"  → logged in
+// "guest" → logged out
+// "real"  → actual backend
+//
+const MOCK_MODE = "guest";
+
 const guestNavItems = [
   { label: "Home", route: "Home", icon: Home },
   { label: "Sign In", route: "Login", icon: LogIn },
@@ -31,7 +39,6 @@ const guestNavItems = [
   { label: "Scan QR", route: "Scanner", icon: ScanLine },
 ];
 
-// Routes shown when user IS logged in
 const authNavItems = [
   { label: "Home", route: "Home", icon: Home },
   { label: "Profile", route: "Profile", icon: User },
@@ -45,14 +52,29 @@ export const BrandHeader = ({ navigation }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState(null);
 
-  // Check auth state every time menu opens
   useEffect(() => {
     async function checkAuth() {
+      // ✅ MOCK AUTH
+      if (MOCK_MODE === "auth") {
+        setIsLoggedIn(true);
+        setUserName("Vishal Dev");
+        return;
+      }
+
+      if (MOCK_MODE === "guest") {
+        setIsLoggedIn(false);
+        setUserName(null);
+        return;
+      }
+
+      // ✅ REAL AUTH
       const token = await getToken();
       const user = await getUser();
+
       setIsLoggedIn(!!token && !!user);
       setUserName(user?.name || null);
     }
+
     checkAuth();
   }, [menuOpen]);
 
@@ -81,32 +103,28 @@ export const BrandHeader = ({ navigation }) => {
 
   return (
     <>
-      {/* Header title row */}
+      {/* HEADER */}
       <View style={styles.row}>
         <Pressable
           onPress={() => navigation.navigate("Home")}
           style={styles.logoRow}
-          hitSlop={8}
         >
           <View style={styles.logoIcon}>
-            <Search size={16} color={theme.colors.surface} />
+            <Search size={16} color={theme.colors.primary} />
           </View>
+
           <View>
             <Text style={styles.logoText}>Find My Things</Text>
             <Text style={styles.logoSub}>Tag. Scan. Recover.</Text>
           </View>
         </Pressable>
 
-        <Pressable
-          onPress={() => setMenuOpen(true)}
-          style={styles.menuBtn}
-          hitSlop={8}
-        >
-          <Menu size={22} color={theme.colors.surface} />
+        <Pressable onPress={() => setMenuOpen(true)} style={styles.menuBtn}>
+          <Menu size={22} color={theme.colors.onSurface} />
         </Pressable>
       </View>
 
-      {/* Full-screen menu modal */}
+      {/* DRAWER */}
       <Modal
         visible={menuOpen}
         transparent
@@ -115,22 +133,22 @@ export const BrandHeader = ({ navigation }) => {
       >
         <Pressable style={styles.backdrop} onPress={() => setMenuOpen(false)}>
           <Pressable style={styles.drawer} onPress={() => {}}>
-            {/* Drawer header */}
+            {/* HEADER */}
             <View style={styles.drawerHeader}>
               <View>
                 <Text style={styles.drawerTitle}>Find My Things</Text>
-                {isLoggedIn && userName ? (
-                  <Text style={styles.drawerSub}>Hi, {userName}</Text>
-                ) : (
-                  <Text style={styles.drawerSub}>Guest</Text>
-                )}
+
+                <Text style={styles.drawerSub}>
+                  {isLoggedIn && userName ? `Hi, ${userName}` : "Guest"}
+                </Text>
               </View>
-              <Pressable onPress={() => setMenuOpen(false)} hitSlop={8}>
-                <X size={22} color={theme.colors.surface} />
+
+              <Pressable onPress={() => setMenuOpen(false)}>
+                <X size={22} color={theme.colors.onSurface} />
               </Pressable>
             </View>
 
-            {/* Nav items */}
+            {/* NAV ITEMS */}
             {navItems.map(({ label, route, icon: Icon }) => (
               <TouchableOpacity
                 key={route}
@@ -138,20 +156,21 @@ export const BrandHeader = ({ navigation }) => {
                 onPress={() => handleNavigate(route)}
                 activeOpacity={0.7}
               >
-                <Icon size={18} color={theme.colors.surface} />
+                <Icon size={18} color={theme.colors.onSurface} />
                 <Text style={styles.navLabel}>{label}</Text>
               </TouchableOpacity>
             ))}
 
-            {/* Logout button for logged-in users */}
+            {/* LOGOUT */}
             {isLoggedIn && (
               <TouchableOpacity
                 style={[styles.navItem, styles.logoutItem]}
                 onPress={handleLogout}
-                activeOpacity={0.7}
               >
-                <LogOut size={18} color={theme.colors.logout} />
-                <Text style={[styles.navLabel, { color: theme.colors.logout }]}>
+                <LogOut size={18} color={theme.colors.tertiary} />
+                <Text
+                  style={[styles.navLabel, { color: theme.colors.tertiary }]}
+                >
                   Logout
                 </Text>
               </TouchableOpacity>
@@ -162,86 +181,3 @@ export const BrandHeader = ({ navigation }) => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-  },
-  logoRow: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 8,
-  },
-  logoIcon: {
-    backgroundColor: "rgba(255,255,255,0.15)",
-    padding: 6,
-    borderRadius: 8,
-  },
-  logoText: {
-    color: "#e6eef8",
-    fontSize: 15,
-    fontWeight: "700",
-  },
-  logoSub: {
-    color: "#cfe6ff",
-    fontSize: 10,
-  },
-  menuBtn: {
-    padding: 4,
-  },
-  backdrop: {
-    flex: 1,
-    backgroundColor: "rgba(0,0,0,0.55)",
-    justifyContent: "flex-start",
-    alignItems: "flex-end",
-  },
-  drawer: {
-    width: 260,
-    minHeight: "100%",
-    backgroundColor: "#0f1724",
-    paddingTop: 56,
-    paddingHorizontal: 16,
-    paddingBottom: 32,
-    gap: 4,
-  },
-  drawerHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 24,
-    paddingBottom: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: "rgba(230,238,248,0.12)",
-  },
-  drawerTitle: {
-    color: "#e6eef8",
-    fontSize: 16,
-    fontWeight: "700",
-  },
-  drawerSub: {
-    color: "#94a3b8",
-    fontSize: 12,
-    marginTop: 2,
-  },
-  navItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-    paddingVertical: 13,
-    paddingHorizontal: 12,
-    borderRadius: 10,
-  },
-  navLabel: {
-    color: "#e6eef8",
-    fontSize: 15,
-    fontWeight: "500",
-  },
-  logoutItem: {
-    marginTop: 12,
-    borderTopWidth: 1,
-    borderTopColor: "rgba(230,238,248,0.12)",
-    paddingTop: 16,
-  },
-});
