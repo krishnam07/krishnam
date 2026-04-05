@@ -30,7 +30,7 @@ import { theme, styles } from "../../styles";
 // "guest" → logged out
 // "real"  → actual backend
 //
-const MOCK_MODE = "guest";
+const MOCK_MODE = "auth";
 
 const guestNavItems = [
   { label: "Home", route: "Home", icon: Home },
