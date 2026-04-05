@@ -7,6 +7,9 @@
     "userInterfaceStyle": "dark",
     "assetBundlePatterns": [
       "**/*"
+    ],
+    "plugins": [
+      "expo-font"
     ]
   }
 }
