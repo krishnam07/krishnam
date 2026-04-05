@@ -16,28 +16,40 @@ import { ProfileRow } from "../components";
 
 const brandLogo = require("../assets/kd.png");
 
+// 👇 toggle this when backend ready
+const USE_MOCK = true;
+
 export const ProfileScreen = ({ navigation }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     async function loadProfile() {
-      const localUser = await getUser();
-      const token = await getToken();
-
-      if (!token) {
-        navigation.navigate("Login");
-        return;
-      }
-
-      if (localUser) setUser(localUser);
-
       try {
+        const localUser = await getUser();
+
+        // ✅ Always allow mock user
+        if (localUser) {
+          setUser(localUser);
+        }
+
+        if (USE_MOCK) return; // 🔥 stop here in mock mode
+
+        const token = await getToken();
+
+        // only redirect in real mode
+        if (!token) {
+          navigation.replace("Login");
+          return;
+        }
+
+        // fetch from backend
         const { data } = await api.get("/auth/profile", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        setUser({ ...localUser, ...data });
-      } catch {
-        setUser(localUser);
+
+        setUser((prev) => ({ ...prev, ...data }));
+      } catch (err) {
+        console.log("Profile load error:", err);
       }
     }
 
@@ -46,8 +58,14 @@ export const ProfileScreen = ({ navigation }) => {
 
   async function handleLogout() {
     await clearSession();
+    setUser(null);
+
     Alert.alert("Logged out", "Session cleared");
-    navigation.replace("Login");
+
+    // ✅ don't break flow in mock
+    if (!USE_MOCK) {
+      navigation.replace("Login");
+    }
   }
 
   function handleInAppCall(type, number) {
@@ -160,7 +178,7 @@ export const ProfileScreen = ({ navigation }) => {
         ]}
         onPress={handleLogout}
       >
-        <Text style={{ color: theme.colors.onSurface }}>Logout</Text>
+        <Text style={{ color: theme.colors.onErrorContainer }}>Logout</Text>
       </Pressable>
 
       {/* FOOTER */}

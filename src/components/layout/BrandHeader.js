@@ -129,17 +129,19 @@ export const BrandHeader = ({ navigation }) => {
       <Modal
         visible={menuOpen}
         transparent
-        animationType="fade"
+        animationType="slide"
         onRequestClose={() => setMenuOpen(false)}
       >
         <Pressable style={styles.backdrop} onPress={() => setMenuOpen(false)}>
-          <Pressable style={styles.drawer} onPress={() => {}}>
-            {/* HEADER */}
-            <View style={styles.drawerHeader}>
-              <View>
-                <Text style={styles.drawerTitle}>Find My Things</Text>
+          <Pressable style={styles.bottomSheet} onPress={() => {}}>
+            {/* Drag Handle */}
+            <View style={styles.dragHandle} />
 
-                <Text style={styles.drawerSub}>
+            {/* HEADER */}
+            <View style={styles.sheetHeader}>
+              <View>
+                <Text style={styles.sheetTitle}>Find My Things</Text>
+                <Text style={styles.sheetSub}>
                   {isLoggedIn && userName ? `Hi, ${userName}` : "Guest"}
                 </Text>
               </View>
@@ -150,31 +152,31 @@ export const BrandHeader = ({ navigation }) => {
             </View>
 
             {/* NAV ITEMS */}
-            {navItems.map(({ label, route, icon: Icon }) => (
-              <TouchableOpacity
-                key={route}
-                style={styles.navItem}
-                onPress={() => handleNavigate(route)}
-                activeOpacity={0.7}
-              >
-                <Icon size={18} color={theme.colors.onSurface} />
-                <Text style={styles.navLabel}>{label}</Text>
-              </TouchableOpacity>
-            ))}
+            <View style={styles.navList}>
+              {navItems.map(({ label, route, icon: Icon }) => (
+                <Pressable
+                  key={route}
+                  style={({ pressed }) => [
+                    styles.navItem,
+                    pressed && { opacity: 0.7 },
+                  ]}
+                  onPress={() => handleNavigate(route)}
+                >
+                  <View style={styles.navIcon}>
+                    <Icon size={18} color={theme.colors.primary} />
+                  </View>
+
+                  <Text style={styles.navLabel}>{label}</Text>
+                </Pressable>
+              ))}
+            </View>
 
             {/* LOGOUT */}
             {isLoggedIn && (
-              <TouchableOpacity
-                style={[styles.navItem, styles.logoutItem]}
-                onPress={handleLogout}
-              >
-                <LogOut size={18} color={theme.colors.tertiary} />
-                <Text
-                  style={[styles.navLabel, { color: theme.colors.tertiary }]}
-                >
-                  Logout
-                </Text>
-              </TouchableOpacity>
+              <Pressable style={styles.logoutBtn} onPress={handleLogout}>
+                <LogOut size={18} color="#fff" />
+                <Text style={styles.logoutText}>Logout</Text>
+              </Pressable>
             )}
           </Pressable>
         </Pressable>

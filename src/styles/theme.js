@@ -1,8 +1,5 @@
 import { StyleSheet } from "react-native";
 
-/* =========================
-   🎨 TYPOGRAPHY (Editorial)
-========================= */
 export const typography = {
   displayLg: {
     fontSize: 56,
@@ -31,9 +28,6 @@ export const typography = {
   },
 };
 
-/* =========================
-   🎨 COLORS (Strict DS)
-========================= */
 export const theme = {
   colors: {
     /* Base */
@@ -470,68 +464,6 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
-  logoText: {
-    color: "#e6eef8",
-    fontSize: 15,
-    fontWeight: "700",
-  },
-
-  logoSub: {
-    color: "#cfe6ff",
-    fontSize: 10,
-  },
-
-  menuBtn: {
-    padding: 6,
-  },
-
-  backdrop: {
-    flex: 1,
-    backgroundColor: "rgba(25,28,30,0.4)",
-    alignItems: "flex-end",
-  },
-
-  drawer: {
-    width: 260,
-    height: "100%",
-    backgroundColor: theme.colors.surfaceLow,
-    paddingTop: 56,
-    paddingHorizontal: 16,
-    paddingBottom: 32,
-    gap: 8,
-  },
-
-  drawerHeader: {
-    marginBottom: 24,
-    gap: 4,
-  },
-
-  drawerTitle: {
-    color: theme.colors.onSurface,
-    fontSize: 16,
-    fontWeight: "700",
-  },
-
-  drawerSub: {
-    color: theme.colors.primary,
-    fontSize: 12,
-  },
-
-  navItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 12,
-    paddingVertical: 12,
-    paddingHorizontal: 12,
-    borderRadius: 12,
-  },
-
-  navLabel: {
-    color: theme.colors.onSurface,
-    fontSize: 15,
-    fontWeight: "500",
-  },
-
   logoutItem: {
     marginTop: 16,
   },
@@ -546,10 +478,6 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.surface,
     borderBottomWidth: 1,
     borderBottomColor: theme.colors.surfaceHigh,
-  },
-
-  logoRow: {
-    flex: 1,
   },
 
   logoTextWrap: {
@@ -573,13 +501,186 @@ export const styles = StyleSheet.create({
     gap: 12,
   },
 
-  logoIcon: {
-    backgroundColor: "rgba(35,70,213,0.1)",
-    padding: 6,
-    borderRadius: 8,
-  },
-
   menuBtn: {
     padding: 6,
+  },
+
+  backdrop: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.4)",
+    justifyContent: "flex-end", // ⬅️ bottom sheet
+  },
+
+  bottomSheet: {
+    backgroundColor: theme.colors.surface,
+    borderTopLeftRadius: 28,
+    borderTopRightRadius: 28,
+    paddingHorizontal: 20,
+    paddingTop: 12,
+    paddingBottom: 24,
+  },
+
+  dragHandle: {
+    width: 40,
+    height: 4,
+    borderRadius: 10,
+    backgroundColor: theme.colors.surfaceHigh,
+    alignSelf: "center",
+    marginBottom: 12,
+  },
+
+  sheetHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 16,
+  },
+
+  sheetTitle: {
+    fontSize: 18,
+    fontWeight: "800",
+    color: theme.colors.onSurface,
+  },
+
+  sheetSub: {
+    fontSize: 12,
+    color: theme.colors.onSurfaceVariant,
+    marginTop: 2,
+  },
+
+  navList: {
+    gap: 10,
+    marginBottom: 16,
+  },
+
+  navItem: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 12,
+    borderRadius: 14,
+    backgroundColor: theme.colors.surfaceLow,
+  },
+
+  navIcon: {
+    backgroundColor: "rgba(35,70,213,0.1)",
+    padding: 8,
+    borderRadius: 10,
+  },
+
+  navLabel: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: theme.colors.onSurface,
+  },
+
+  logoutBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    paddingVertical: 14,
+    borderRadius: 999,
+    backgroundColor: theme.colors.tertiary,
+  },
+
+  logoutText: {
+    color: "#fff",
+    fontWeight: "700",
+  },
+
+  center: {
+    alignItems: "center",
+  },
+
+  centerText: {
+    textAlign: "center",
+  },
+
+  mt8: { marginTop: 8 },
+  mt12: { marginTop: 12 },
+  mt16: { marginTop: 16 },
+
+  flex1: { flex: 1 },
+
+  qrIconWrap: {
+    backgroundColor: "rgba(35,70,213,0.1)",
+    padding: 12,
+    borderRadius: 16,
+  },
+
+  qrWrapper: {
+    marginTop: 16,
+    backgroundColor: theme.colors.surfaceLow,
+    padding: 12,
+    borderRadius: theme.radius.lg,
+  },
+
+  qrInner: {
+    backgroundColor: theme.colors.tertiary,
+    padding: 12,
+    borderRadius: theme.radius.md,
+    elevation: 3,
+  },
+  //custommize
+
+  select: {
+    backgroundColor: theme.colors.primaryContainer,
+    padding: 14,
+    borderRadius: 12,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+
+  modalBackdrop: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.6)",
+    justifyContent: "flex-end",
+  },
+
+  modalSheet: {
+    backgroundColor: "#0f172a",
+    padding: 16,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+
+  option: {
+    padding: 14,
+  },
+
+  optionText: {
+    color: theme.colors.surface,
+    fontSize: 16,
+  },
+
+  qrCard: {
+    alignItems: "center",
+    padding: 20,
+    backgroundColor: "#fff",
+    borderRadius: 20,
+  },
+
+  qrTitle: {
+    marginTop: 12,
+    fontWeight: "700",
+    fontSize: 16,
+  },
+
+  qrSub: {
+    color: "#666",
+  },
+
+  emptyBox: {
+    padding: 20,
+    borderWidth: 1,
+    borderColor: "#334155",
+    borderRadius: 12,
+  },
+
+  primaryBtnText: {
+    color: "#fff",
+    fontWeight: "700",
   },
 });
