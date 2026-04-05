@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { BrandHeader } from "./src/components";
 import { routes } from "./src/routes";
+import { theme } from "./src/styles";
 
 const Stack = createNativeStackNavigator();
 
@@ -13,12 +14,12 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={({ navigation }) => ({
-          headerStyle: { backgroundColor: "#0f1724" },
-          headerTintColor: "#e6eef8",
+          headerStyle: { backgroundColor: theme.colors.primary },
+          headerTintColor: theme.colors.surface,
           headerTitleAlign: "left",
           headerTitle: () => <BrandHeader navigation={navigation} />,
           headerTitleContainerStyle: { left: 0, right: 0 },
-          contentStyle: { backgroundColor: "#0f1724" },
+          contentStyle: { backgroundColor: theme.colors.surface },
         })}
       >
         {routes.map(({ name, component }) => (

@@ -9,6 +9,8 @@ export const GradientButton = ({ title }) => {
     <Pressable>
       <LinearGradient
         colors={[theme.colors.primary, theme.colors.primaryContainer]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }} // 🔥 135deg feel
         style={styles.primaryBtn}
       >
         <Text style={styles.primaryText}>{title}</Text>

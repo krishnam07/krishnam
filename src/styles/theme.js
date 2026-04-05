@@ -47,7 +47,7 @@ export const theme = {
 
     /* Brand */
     primary: "#2346d5",
-    primaryContainer: "#4361ee",
+    primaryContainer: "#5b73f0", // 👈 brighter for contrast
 
     /* Success */
     tertiary: "#006431",
@@ -148,10 +148,13 @@ export const styles = StyleSheet.create({
      BUTTONS
   ========================= */
   primaryBtn: {
-    paddingVertical: 14,
+    paddingVertical: 16, // ⬆ better touch + weight
+    paddingHorizontal: 24, // ⬅ FIX: missing before
     borderRadius: theme.radius.full,
     alignItems: "center",
-    flex: 1,
+    justifyContent: "center", // ⬅ ensure vertical centering
+    flexDirection: "row", // ⬅ for icon support
+    gap: 8, // ⬅ spacing between text/icon
   },
 
   primaryText: {
@@ -282,5 +285,114 @@ export const styles = StyleSheet.create({
     paddingHorizontal: theme.spacing.md,
     paddingVertical: theme.spacing.sm,
     color: theme.colors.onSurface,
+  },
+
+  // asdf
+  ctaWrapper: {
+    marginTop: theme.spacing.xl,
+  },
+
+  ctaContainer: {
+    padding: theme.spacing.xxl,
+    borderRadius: theme.radius.xl,
+    alignItems: "center",
+    gap: theme.spacing.lg,
+    overflow: "hidden",
+  },
+
+  ctaTitle: {
+    ...typography.headlineLg,
+    color: "#fff",
+    textAlign: "center",
+  },
+
+  ctaSubtitle: {
+    ...typography.bodyLg,
+    color: "rgba(255,255,255,0.8)",
+    textAlign: "center",
+    maxWidth: 280,
+  },
+
+  ctaButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: theme.spacing.sm,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderRadius: theme.radius.full,
+    backgroundColor: "#fff",
+  },
+
+  ctaButtonText: {
+    color: theme.colors.primary,
+    fontWeight: "700",
+  },
+
+  /* Glow (Glass-like softness) */
+  ctaGlowTop: {
+    position: "absolute",
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    backgroundColor: "rgba(255,255,255,0.1)",
+    top: -60,
+    right: -60,
+  },
+
+  ctaGlowBottom: {
+    position: "absolute",
+    width: 200,
+    height: 200,
+    borderRadius: 100,
+    backgroundColor: "rgba(255,255,255,0.1)",
+    bottom: -60,
+    left: -60,
+  },
+
+  footer: {
+    marginTop: theme.spacing.xxl,
+    paddingVertical: theme.spacing.xxl,
+    paddingHorizontal: theme.spacing.lg,
+    backgroundColor: theme.colors.surfaceLow,
+    borderTopLeftRadius: theme.radius.xl,
+    borderTopRightRadius: theme.radius.xl,
+    alignItems: "center",
+    gap: theme.spacing.xl,
+  },
+
+  footerBrand: {
+    alignItems: "center",
+    gap: theme.spacing.sm,
+  },
+
+  footerLogoRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: theme.spacing.sm,
+  },
+
+  footerLogoText: {
+    ...typography.headlineLg,
+    color: theme.colors.primary,
+  },
+
+  footerTagline: {
+    ...typography.bodyLg,
+    color: theme.colors.onSurfaceVariant,
+    textAlign: "center",
+  },
+
+  footerLinks: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: theme.spacing.lg,
+  },
+
+  footerBottom: {
+    ...typography.labelMd,
+    color: theme.colors.onSurfaceVariant,
+    opacity: 0.6,
   },
 });

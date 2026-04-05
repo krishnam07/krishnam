@@ -1,4 +1,5 @@
 export * from "./FeatureCard";
+export * from "./FooterLink";
 export * from "./GradientButton";
 export * from "./InputField";
 export * from "./Interaction";
