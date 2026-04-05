@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { BrandHeader } from "./src/components/shared";
+import { BrandHeader } from "./src/components";
 import { routes } from "./src/routes";
 
 const Stack = createNativeStackNavigator();
