@@ -535,4 +535,51 @@ export const styles = StyleSheet.create({
   logoutItem: {
     marginTop: 16,
   },
+
+  //brand header styles
+  headerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    height: 64,
+    backgroundColor: theme.colors.surface,
+    borderBottomWidth: 1,
+    borderBottomColor: theme.colors.surfaceHigh,
+  },
+
+  logoRow: {
+    flex: 1,
+  },
+
+  logoTextWrap: {
+    justifyContent: "center",
+  },
+
+  logoText: {
+    color: theme.colors.onSurface,
+    fontSize: 16,
+    fontWeight: "800",
+  },
+
+  logoSub: {
+    color: theme.colors.onSurfaceVariant,
+    fontSize: 11,
+  },
+
+  rightActions: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+  },
+
+  logoIcon: {
+    backgroundColor: "rgba(35,70,213,0.1)",
+    padding: 6,
+    borderRadius: 8,
+  },
+
+  menuBtn: {
+    padding: 6,
+  },
 });

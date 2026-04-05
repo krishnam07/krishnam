@@ -37,21 +37,12 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={({ navigation }) => ({
-          headerStyle: { backgroundColor: theme.colors.primary },
-          headerTintColor: theme.colors.surface,
-          headerTitleAlign: "left",
-          headerTitle: () => <BrandHeader navigation={navigation} />,
-          headerTitleContainerStyle: { left: 0, right: 0 },
+          header: () => <BrandHeader navigation={navigation} />, // ✅ FULL control
           contentStyle: { backgroundColor: theme.colors.surface },
         })}
       >
         {routes.map(({ name, component }) => (
-          <Stack.Screen
-            key={name}
-            name={name}
-            component={component}
-            options={{ title: name }}
-          />
+          <Stack.Screen key={name} name={name} component={component} />
         ))}
       </Stack.Navigator>
     </NavigationContainer>

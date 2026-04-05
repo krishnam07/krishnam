@@ -103,25 +103,26 @@ export const BrandHeader = ({ navigation }) => {
 
   return (
     <>
-      {/* HEADER */}
-      <View style={styles.row}>
+      <View style={styles.headerContainer}>
         <Pressable
           onPress={() => navigation.navigate("Home")}
           style={styles.logoRow}
         >
-          <View style={styles.logoIcon}>
-            <Search size={16} color={theme.colors.primary} />
-          </View>
-
-          <View>
+          <View style={styles.logoTextWrap}>
             <Text style={styles.logoText}>Find My Things</Text>
             <Text style={styles.logoSub}>Tag. Scan. Recover.</Text>
           </View>
         </Pressable>
 
-        <Pressable onPress={() => setMenuOpen(true)} style={styles.menuBtn}>
-          <Menu size={22} color={theme.colors.onSurface} />
-        </Pressable>
+        <View style={styles.rightActions}>
+          <View style={styles.logoIcon}>
+            <Search size={16} color={theme.colors.primary} />
+          </View>
+
+          <Pressable onPress={() => setMenuOpen(true)} style={styles.menuBtn}>
+            <Menu size={22} color={theme.colors.onSurface} />
+          </Pressable>
+        </View>
       </View>
 
       {/* DRAWER */}
