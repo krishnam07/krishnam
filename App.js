@@ -6,9 +6,32 @@ import { BrandHeader } from "./src/components";
 import { routes } from "./src/routes";
 import { theme } from "./src/styles";
 
+import { useFonts } from "expo-font";
+import {
+  Montserrat_400Regular,
+  Montserrat_500Medium,
+  Montserrat_600SemiBold,
+  Montserrat_700Bold,
+} from "@expo-google-fonts/montserrat";
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Montserrat_400Regular,
+    Montserrat_500Medium,
+    Montserrat_600SemiBold,
+    Montserrat_700Bold,
+  });
+
+  if (!fontsLoaded) return null;
+
+  // ✅ Apply AFTER fonts load
+  Text.defaultProps = Text.defaultProps || {};
+  Text.defaultProps.style = {
+    fontFamily: "Montserrat_400Regular",
+  };
+
   return (
     <NavigationContainer>
       <Stack.Navigator

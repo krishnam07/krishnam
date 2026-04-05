@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { CameraView, useCameraPermissions } from "expo-camera";
 
 import { styles, theme } from "../styles";
+import { GradientButton } from "../components";
 
 export const ScannerScreen = () => {
   const [permission, requestPermission] = useCameraPermissions();
@@ -50,16 +51,16 @@ export const ScannerScreen = () => {
           >
             Allow camera access to scan QR codes.
           </Text>
-          <Pressable
-            style={[
-              styles.button,
-              { marginTop: 14, backgroundColor: theme.colors.primary },
-            ]}
+
+          <GradientButton
+            title={
+              <>
+                Allow Camera
+                <MaterialCommunityIcons name="camera" size={16} color="#fff" />
+              </>
+            }
             onPress={requestPermission}
-          >
-            <MaterialCommunityIcons name="camera" size={16} color="#fff" />
-            <Text style={styles.buttonText}>Allow Camera</Text>
-          </Pressable>
+          />
         </View>
       </View>
     );

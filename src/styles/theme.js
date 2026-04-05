@@ -7,27 +7,27 @@ export const typography = {
   displayLg: {
     fontSize: 56,
     letterSpacing: -1.5,
-    fontWeight: "700",
+    fontFamily: "Montserrat_700Bold",
   },
 
   headlineLg: {
     fontSize: 32,
-    fontWeight: "600",
+    fontFamily: "Montserrat_600SemiBold",
   },
 
   titleMd: {
     fontSize: 20,
-    fontWeight: "700",
+    fontFamily: "Montserrat_700Bold",
   },
 
   bodyLg: {
     fontSize: 16,
-    fontWeight: "400",
+    fontFamily: "Montserrat_400Regular",
   },
 
   labelMd: {
     fontSize: 12,
-    fontWeight: "500",
+    fontFamily: "Montserrat_500Medium",
   },
 };
 
