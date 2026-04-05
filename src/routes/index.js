@@ -1,7 +1,7 @@
 import {
   HomeScreen,
-  LoginScreen,
-  RegisterScreen,
+  Signin,
+  Signup,
   ProfileScreen,
   QRScreen,
   ScannerScreen,
@@ -15,11 +15,11 @@ export const routes = [
   },
   {
     name: "Login",
-    component: LoginScreen,
+    component: Signin,
   },
   {
     name: "Register",
-    component: RegisterScreen,
+    component: Signup,
   },
   {
     name: "Profile",

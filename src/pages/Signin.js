@@ -5,7 +5,7 @@ import { styles, theme } from "../styles";
 
 import { api, setSession } from "../services";
 
-export const LoginScreen = ({ navigation }) => {
+export const Signin = ({ navigation }) => {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
 

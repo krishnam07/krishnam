@@ -15,7 +15,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { styles, theme } from "../styles";
 import { setSession, api, API_BASE_URL } from "../services";
 
-export const RegisterScreen = ({ navigation }) => {
+export const Signup = ({ navigation }) => {
   const [name, setName] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [emergencyContact, setEmergencyContact] = useState("");

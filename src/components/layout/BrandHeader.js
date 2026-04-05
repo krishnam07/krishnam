@@ -21,6 +21,7 @@ import {
   LogOut,
 } from "lucide-react-native";
 import { getToken, getUser, clearSession } from "../../services";
+import { theme } from "../../styles";
 
 // Routes shown when user is NOT logged in
 const guestNavItems = [
@@ -88,7 +89,7 @@ export const BrandHeader = ({ navigation }) => {
           hitSlop={8}
         >
           <View style={styles.logoIcon}>
-            <Search size={16} color="#e6eef8" />
+            <Search size={16} color={theme.colors.surface} />
           </View>
           <View>
             <Text style={styles.logoText}>Find My Things</Text>
@@ -101,7 +102,7 @@ export const BrandHeader = ({ navigation }) => {
           style={styles.menuBtn}
           hitSlop={8}
         >
-          <Menu size={22} color="#e6eef8" />
+          <Menu size={22} color={theme.colors.surface} />
         </Pressable>
       </View>
 
@@ -125,7 +126,7 @@ export const BrandHeader = ({ navigation }) => {
                 )}
               </View>
               <Pressable onPress={() => setMenuOpen(false)} hitSlop={8}>
-                <X size={22} color="#e6eef8" />
+                <X size={22} color={theme.colors.surface} />
               </Pressable>
             </View>
 
@@ -137,7 +138,7 @@ export const BrandHeader = ({ navigation }) => {
                 onPress={() => handleNavigate(route)}
                 activeOpacity={0.7}
               >
-                <Icon size={18} color="#cfe6ff" />
+                <Icon size={18} color={theme.colors.surface} />
                 <Text style={styles.navLabel}>{label}</Text>
               </TouchableOpacity>
             ))}
@@ -149,8 +150,8 @@ export const BrandHeader = ({ navigation }) => {
                 onPress={handleLogout}
                 activeOpacity={0.7}
               >
-                <LogOut size={18} color="#f87171" />
-                <Text style={[styles.navLabel, { color: "#f87171" }]}>
+                <LogOut size={18} color={theme.colors.logout} />
+                <Text style={[styles.navLabel, { color: theme.colors.logout }]}>
                   Logout
                 </Text>
               </TouchableOpacity>

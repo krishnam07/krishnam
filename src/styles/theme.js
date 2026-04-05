@@ -58,6 +58,8 @@ export const theme = {
 
     /* Error */
     errorContainer: "#ffdad6",
+
+    logout: "#f87171",
   },
 
   spacing: {
