@@ -2,7 +2,7 @@ import React from "react";
 import { Pressable, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-import { styles, theme } from "./../../styles";
+import { styles, theme } from "../../styles";
 
 export const GradientButton = ({ title }) => {
   return (

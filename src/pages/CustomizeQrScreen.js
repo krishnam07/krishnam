@@ -15,7 +15,7 @@ import * as Sharing from "expo-sharing";
 import { captureRef } from "react-native-view-shot";
 import QRCode from "react-native-qrcode-svg";
 
-import { appStyles, colors } from "../styles";
+import { styles, theme } from "../styles";
 import { getUser, buildUserQrPayload } from "../services";
 import { VEHICLE_OPTIONS, SIZE_OPTIONS, TAG_OPTIONS } from "../constants";
 import {
@@ -190,20 +190,20 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
 
   return (
     <ScrollView
-      style={appStyles.container}
+      style={styles.container}
       contentContainerStyle={{ paddingBottom: 20 }}
     >
-      <View style={appStyles.card}>
-        <Text style={appStyles.title}>Customize your QR</Text>
-        <Text style={[appStyles.subtitle, { marginTop: 8 }]}>
+      <View style={styles.card}>
+        <Text style={styles.title}>Customize your QR</Text>
+        <Text style={[styles.subtitle, { marginTop: 8 }]}>
           Set QR type, dimensions and tagline before download.
         </Text>
 
         <View style={{ marginTop: 14 }}>
           <Text
             style={[
-              appStyles.subtitle,
-              { color: colors.text, fontWeight: "700", fontSize: 13 },
+              styles.subtitle,
+              { color: theme.colors.primary, fontWeight: "700", fontSize: 13 },
             ]}
           >
             QR type
@@ -220,8 +220,11 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
             <Picker
               selectedValue={vehicle}
               onValueChange={(value) => resetAfterVehicle(value)}
-              dropdownIconColor={colors.text}
-              style={{ color: colors.text, backgroundColor: "#0c1a2d" }}
+              dropdownIconColor={theme.colors.onSurface}
+              style={{
+                color: theme.colors.onSurface,
+                backgroundColor: "#0c1a2d",
+              }}
             >
               <Picker.Item label="Select QR type" value="" color="#8ea9c7" />
               {VEHICLE_OPTIONS.map((option) => (
@@ -229,7 +232,7 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
                   key={option}
                   label={option}
                   value={option}
-                  color={colors.text}
+                  color={theme.colors.onSurface}
                 />
               ))}
             </Picker>
@@ -240,8 +243,12 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
           <View style={{ marginTop: 14 }}>
             <Text
               style={[
-                appStyles.subtitle,
-                { color: colors.text, fontWeight: "700", fontSize: 13 },
+                styles.subtitle,
+                {
+                  color: theme.colors.onSurface,
+                  fontWeight: "700",
+                  fontSize: 13,
+                },
               ]}
             >
               Add something interesting
@@ -258,8 +265,11 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
               <Picker
                 selectedValue={tagOption}
                 onValueChange={(value) => handleTagChange(value)}
-                dropdownIconColor={colors.text}
-                style={{ color: colors.text, backgroundColor: "#0c1a2d" }}
+                dropdownIconColor={theme.colors.onSurface}
+                style={{
+                  color: theme.colors.onSurface,
+                  backgroundColor: "#0c1a2d",
+                }}
               >
                 <Picker.Item
                   label="Select an option"
@@ -271,7 +281,7 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
                     key={option}
                     label={option}
                     value={option}
-                    color={colors.text}
+                    color={theme.colors.onSurface}
                   />
                 ))}
               </Picker>
@@ -283,14 +293,18 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
           <View style={{ marginTop: 12 }}>
             <Text
               style={[
-                appStyles.subtitle,
-                { color: colors.text, fontWeight: "700", fontSize: 13 },
+                styles.subtitle,
+                {
+                  color: theme.colors.onSurface,
+                  fontWeight: "700",
+                  fontSize: 13,
+                },
               ]}
             >
               Your custom tagline
             </Text>
             <TextInput
-              style={[appStyles.input, { marginTop: 8 }]}
+              style={[styles.input, { marginTop: 8 }]}
               value={customTag}
               onChangeText={(text) => {
                 setCustomTag(text);
@@ -306,8 +320,12 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
           <View style={{ marginTop: 14 }}>
             <Text
               style={[
-                appStyles.subtitle,
-                { color: colors.text, fontWeight: "700", fontSize: 13 },
+                styles.subtitle,
+                {
+                  color: theme.colors.onSurface,
+                  fontWeight: "700",
+                  fontSize: 13,
+                },
               ]}
             >
               Dimensions
@@ -324,8 +342,11 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
               <Picker
                 selectedValue={size}
                 onValueChange={(value) => resetAfterSize(value)}
-                dropdownIconColor={colors.text}
-                style={{ color: colors.text, backgroundColor: "#0c1a2d" }}
+                dropdownIconColor={theme.colors.onSurface}
+                style={{
+                  color: theme.colors.onSurface,
+                  backgroundColor: "#0c1a2d",
+                }}
               >
                 <Picker.Item
                   label="Select dimensions"
@@ -337,7 +358,7 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
                     key={option}
                     label={option}
                     value={option}
-                    color={colors.text}
+                    color={theme.colors.onSurface}
                   />
                 ))}
               </Picker>
@@ -345,13 +366,13 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
           </View>
         ) : null}
 
-        <View style={[appStyles.row, { marginTop: 18 }]}>
+        <View style={[styles.row, { marginTop: 18 }]}>
           <Pressable
             style={[
-              appStyles.button,
+              styles.button,
               {
                 flex: 1,
-                backgroundColor: colors.success,
+                backgroundColor: theme.colors.tertiary,
                 opacity: processing ? 0.7 : 1,
               },
             ]}
@@ -359,20 +380,23 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
             disabled={processing}
           >
             <Ionicons name="checkmark-circle" size={16} color="#fff" />
-            <Text style={appStyles.buttonText}>Confirm</Text>
+            <Text style={styles.buttonText}>Confirm</Text>
           </Pressable>
           <Pressable
-            style={[appStyles.button, { flex: 1, backgroundColor: "#334155" }]}
+            style={[
+              styles.button,
+              { flex: 1, backgroundColor: theme.colors.surfaceHigh },
+            ]}
             onPress={() => navigation.goBack()}
           >
             <Ionicons name="close-circle" size={16} color="#fff" />
-            <Text style={appStyles.buttonText}>Cancel</Text>
+            <Text style={styles.buttonText}>Cancel</Text>
           </Pressable>
         </View>
       </View>
 
-      <View style={[appStyles.card, { alignItems: "center" }]}>
-        <Text style={[appStyles.subtitle, { marginBottom: 10, fontSize: 13 }]}>
+      <View style={[styles.card, { alignItems: "center" }]}>
+        <Text style={[styles.subtitle, { marginBottom: 10, fontSize: 13 }]}>
           QR Preview
         </Text>
         {hasBaseQr && confirmed ? (
@@ -453,7 +477,7 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
               padding: 12,
             }}
           >
-            <Text style={[appStyles.subtitle, { marginTop: 0 }]}>
+            <Text style={[styles.subtitle, { marginTop: 0 }]}>
               Select all options and tap Confirm to see the final QR preview
               with tagline.
             </Text>
@@ -468,7 +492,7 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
               padding: 12,
             }}
           >
-            <Text style={[appStyles.subtitle, { marginTop: 0 }]}>
+            <Text style={[styles.subtitle, { marginTop: 0 }]}>
               QR unavailable: full name and contact number are required.
             </Text>
           </View>
@@ -476,19 +500,19 @@ export const CustomizeQrScreen = ({ navigation, route }) => {
 
         <Pressable
           style={[
-            appStyles.button,
+            styles.button,
             {
               marginTop: 14,
               width: "100%",
               backgroundColor:
-                confirmed && hasBaseQr ? colors.primary : "#334155",
+                confirmed && hasBaseQr ? theme.colors.primary : "#334155",
             },
           ]}
           onPress={handleDownload}
           disabled={!confirmed || !hasBaseQr}
         >
           <Ionicons name="download" size={16} color="#fff" />
-          <Text style={appStyles.buttonText}>Download QR</Text>
+          <Text style={styles.buttonText}>Download QR</Text>
         </Pressable>
       </View>
     </ScrollView>

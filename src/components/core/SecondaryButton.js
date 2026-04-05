@@ -1,5 +1,5 @@
 import { Pressable, Text } from "react-native";
-import { styles, theme } from "../../styles/theme";
+import { styles, theme } from "../../styles";
 
 export const SecondaryButton = ({ title }) => {
   return (

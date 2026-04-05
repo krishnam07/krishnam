@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-import { appStyles, colors } from "../styles";
+import { styles, theme } from "../styles";
 import { setSession, api, API_BASE_URL } from "../services";
 
 export const RegisterScreen = ({ navigation }) => {
@@ -122,24 +122,22 @@ export const RegisterScreen = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView
-      style={{ flex: 1, backgroundColor: colors.bg }}
+      style={{ flex: 1, backgroundColor: theme.colors.surface }}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       keyboardVerticalOffset={18}
     >
       <ScrollView
-        style={appStyles.container}
+        style={styles.container}
         contentContainerStyle={{ paddingBottom: 20 }}
         keyboardShouldPersistTaps="handled"
       >
-        <View style={appStyles.card}>
-          <Text style={appStyles.title}>Register</Text>
-          <Text style={appStyles.subtitle}>Compact mobile signup</Text>
+        <View style={styles.card}>
+          <Text style={styles.title}>Register</Text>
+          <Text style={styles.subtitle}>Compact mobile signup</Text>
 
-          <Text style={[appStyles.subtitle, { marginTop: 12 }]}>
-            Full Name *
-          </Text>
+          <Text style={[styles.subtitle, { marginTop: 12 }]}>Full Name *</Text>
           <TextInput
-            style={[appStyles.input, { marginTop: 6 }]}
+            style={[styles.input, { marginTop: 6 }]}
             placeholder="Full Name"
             placeholderTextColor="#8ea9c7"
             value={name}
@@ -147,9 +145,9 @@ export const RegisterScreen = ({ navigation }) => {
             returnKeyType="next"
           />
 
-          <Text style={appStyles.subtitle}>Contact Number *</Text>
+          <Text style={styles.subtitle}>Contact Number *</Text>
           <TextInput
-            style={[appStyles.input, { marginTop: 6 }]}
+            style={[styles.input, { marginTop: 6 }]}
             placeholder="Contact Number (10 digit)"
             placeholderTextColor="#8ea9c7"
             value={contactNumber}
@@ -159,9 +157,9 @@ export const RegisterScreen = ({ navigation }) => {
             returnKeyType="next"
           />
 
-          <Text style={appStyles.subtitle}>Emergency Contact</Text>
+          <Text style={styles.subtitle}>Emergency Contact</Text>
           <TextInput
-            style={[appStyles.input, { marginTop: 6 }]}
+            style={[styles.input, { marginTop: 6 }]}
             placeholder="Emergency Contact (optional)"
             placeholderTextColor="#8ea9c7"
             value={emergencyContact}
@@ -173,7 +171,7 @@ export const RegisterScreen = ({ navigation }) => {
 
           <View
             style={[
-              appStyles.row,
+              styles.row,
               {
                 alignItems: "center",
                 justifyContent: "space-between",
@@ -181,20 +179,20 @@ export const RegisterScreen = ({ navigation }) => {
               },
             ]}
           >
-            <Text style={[appStyles.subtitle, { flex: 1 }]}>
+            <Text style={[styles.subtitle, { flex: 1 }]}>
               Allow emergency contact call
             </Text>
             <Switch
               value={allowEmergency}
               onValueChange={setAllowEmergency}
-              thumbColor={allowEmergency ? colors.success : "#9ca3af"}
+              thumbColor={allowEmergency ? theme.colors.success : "#9ca3af"}
               trackColor={{ false: "#334155", true: "#065f46" }}
             />
           </View>
 
-          <Text style={appStyles.subtitle}>Email (optional)</Text>
+          <Text style={styles.subtitle}>Email (optional)</Text>
           <TextInput
-            style={[appStyles.input, { marginTop: 6 }]}
+            style={[styles.input, { marginTop: 6 }]}
             placeholder="Email"
             placeholderTextColor="#8ea9c7"
             value={email}
@@ -204,9 +202,9 @@ export const RegisterScreen = ({ navigation }) => {
             returnKeyType="next"
           />
 
-          <Text style={appStyles.subtitle}>Password *</Text>
+          <Text style={styles.subtitle}>Password *</Text>
           <TextInput
-            style={[appStyles.input, { marginTop: 6 }]}
+            style={[styles.input, { marginTop: 6 }]}
             placeholder="Password"
             placeholderTextColor="#8ea9c7"
             value={password}
@@ -216,24 +214,24 @@ export const RegisterScreen = ({ navigation }) => {
           />
           <Text
             style={[
-              appStyles.subtitle,
+              styles.subtitle,
               {
                 marginTop: -4,
                 marginBottom: 8,
                 color: password
                   ? passwordLengthOk
-                    ? "#86efac"
-                    : "#fca5a5"
-                  : colors.subtext,
+                    ? theme.colors.success
+                    : theme.colors.error
+                  : theme.colors.onSurfaceVariant,
               },
             ]}
           >
             Min 6 chars | {getStrengthLabel()}
           </Text>
 
-          <Text style={appStyles.subtitle}>Confirm Password *</Text>
+          <Text style={styles.subtitle}>Confirm Password *</Text>
           <TextInput
-            style={[appStyles.input, { marginTop: 6 }]}
+            style={[styles.input, { marginTop: 6 }]}
             placeholder="Confirm Password"
             placeholderTextColor="#8ea9c7"
             value={confirmPassword}
@@ -243,17 +241,24 @@ export const RegisterScreen = ({ navigation }) => {
             onSubmitEditing={handleRegister}
           />
 
-          <Text style={[appStyles.subtitle, { marginBottom: 12 }]}>
+          <Text style={[styles.subtitle, { marginBottom: 12 }]}>
             We store your number securely. OTP verification will be used for
             mobile verification.
           </Text>
 
           <Pressable
-            style={[appStyles.button, { backgroundColor: colors.warning }]}
+            style={[
+              styles.button,
+              { backgroundColor: theme.colors.errorContainer },
+            ]}
             onPress={handleRegister}
           >
-            <Ionicons name="person-add" size={14} color="#fff" />
-            <Text style={appStyles.buttonText}>Create Account</Text>
+            <Ionicons
+              name="person-add"
+              size={14}
+              color={theme.colors.onError}
+            />
+            <Text style={styles.buttonText}>Create Account</Text>
           </Pressable>
         </View>
       </ScrollView>

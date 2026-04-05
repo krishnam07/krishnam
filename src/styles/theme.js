@@ -280,10 +280,10 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: colors.bg,
+    backgroundColor: theme.colors.bg,
   },
   card: {
-    backgroundColor: "#1a2540",
+    backgroundColor: theme.colors.surfaceLowest,
     borderRadius: 16,
     padding: 16,
     marginBottom: 12,
@@ -291,19 +291,19 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: "700",
-    color: colors.text,
+    color: theme.colors.text,
     marginBottom: 4,
   },
   subtitle: {
     fontSize: 13,
-    color: colors.subtext,
+    color: theme.colors.subtext,
   },
   input: {
-    backgroundColor: "#243050",
+    backgroundColor: theme.colors.surfaceLow,
     borderRadius: 10,
     paddingHorizontal: 14,
     paddingVertical: 10,
-    color: colors.text,
+    color: theme.colors.text,
     fontSize: 14,
     marginBottom: 10,
   },
@@ -315,9 +315,10 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 18,
     borderRadius: 999,
+    backgroundColor: theme.colors.primary,
   },
   buttonText: {
-    color: "#fff",
+    color: theme.colors.onPrimary,
     fontWeight: "700",
     fontSize: 14,
   },
@@ -326,13 +327,3 @@ export const styles = StyleSheet.create({
     gap: 10,
   },
 });
-
-// Legacy aliases for older screens
-export const colors = {
-  bg: "#0f1724",
-  primary: theme.colors.primary,
-  success: "#22c55e",
-  warning: "#f59e0b",
-  text: "#e6eef8",
-  subtext: "#94a3b8",
-};

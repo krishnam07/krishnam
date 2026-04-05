@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Pressable, Text, TextInput, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { appStyles, colors } from "../styles";
+import { styles, theme } from "../styles";
 
 import { api, setSession } from "../services";
 
@@ -29,22 +29,20 @@ export const LoginScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={appStyles.container}>
-      <View style={appStyles.card}>
-        <Text style={appStyles.title}>Login</Text>
-        <Text style={appStyles.subtitle}>
-          Use name, contact number, or email
-        </Text>
+    <View style={styles.container}>
+      <View style={styles.card}>
+        <Text style={styles.title}>Login</Text>
+        <Text style={styles.subtitle}>Use name, contact number, or email</Text>
 
         <TextInput
-          style={[appStyles.input, { marginTop: 12 }]}
+          style={[styles.input, { marginTop: 12 }]}
           placeholder="Name / Contact / Email"
           placeholderTextColor="#8ea9c7"
           value={identifier}
           onChangeText={setIdentifier}
         />
         <TextInput
-          style={appStyles.input}
+          style={styles.input}
           placeholder="Password"
           placeholderTextColor="#8ea9c7"
           value={password}
@@ -53,11 +51,11 @@ export const LoginScreen = ({ navigation }) => {
         />
 
         <Pressable
-          style={[appStyles.button, { backgroundColor: colors.primary }]}
+          style={[styles.button, { backgroundColor: theme.colors.primary }]}
           onPress={handleLogin}
         >
           <Ionicons name="log-in" size={14} color="#fff" />
-          <Text style={appStyles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Login</Text>
         </Pressable>
       </View>
     </View>

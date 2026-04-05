@@ -3,7 +3,7 @@ import { Pressable, Text, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import QRCode from "react-native-qrcode-svg";
 
-import { appStyles, colors } from "../styles";
+import { styles, theme } from "../styles";
 import { getUser, buildUserQrPayload } from "../services";
 
 const brandLogo = require("../assets/kd.png");
@@ -25,14 +25,14 @@ export const QRScreen = ({ navigation }) => {
 
   if (loading) {
     return (
-      <View style={appStyles.container}>
-        <View style={[appStyles.card, { alignItems: "center" }]}>
+      <View style={styles.container}>
+        <View style={[styles.card, { alignItems: "center" }]}>
           <MaterialCommunityIcons
             name="qrcode-scan"
             size={40}
             color="#e6eef8"
           />
-          <Text style={[appStyles.subtitle, { marginTop: 10 }]}>
+          <Text style={[styles.subtitle, { marginTop: 10 }]}>
             Preparing your QR code...
           </Text>
         </View>
@@ -42,41 +42,39 @@ export const QRScreen = ({ navigation }) => {
 
   if (!qrPayload) {
     return (
-      <View style={appStyles.container}>
-        <View style={[appStyles.card, { alignItems: "center" }]}>
+      <View style={styles.container}>
+        <View style={[styles.card, { alignItems: "center" }]}>
           <MaterialCommunityIcons
             name="qrcode-remove"
             size={44}
             color="#e6eef8"
           />
-          <Text style={[appStyles.title, { marginTop: 8 }]}>
-            QR Not Available
-          </Text>
+          <Text style={[styles.title, { marginTop: 8 }]}>QR Not Available</Text>
           <Text
-            style={[appStyles.subtitle, { textAlign: "center", marginTop: 8 }]}
+            style={[styles.subtitle, { textAlign: "center", marginTop: 8 }]}
           >
             Please complete registration or login first. QR code is generated
             after account setup.
           </Text>
 
-          <View style={[appStyles.row, { marginTop: 14 }]}>
+          <View style={[styles.row, { marginTop: 14 }]}>
             <Pressable
               style={[
-                appStyles.button,
-                { flex: 1, backgroundColor: colors.warning },
+                styles.button,
+                { flex: 1, backgroundColor: theme.colors.warning },
               ]}
               onPress={() => navigation.navigate("Register")}
             >
-              <Text style={appStyles.buttonText}>Register</Text>
+              <Text style={styles.buttonText}>Register</Text>
             </Pressable>
             <Pressable
               style={[
-                appStyles.button,
-                { flex: 1, backgroundColor: colors.primary },
+                styles.button,
+                { flex: 1, backgroundColor: theme.colors.primary },
               ]}
               onPress={() => navigation.navigate("Login")}
             >
-              <Text style={appStyles.buttonText}>Login</Text>
+              <Text style={styles.buttonText}>Login</Text>
             </Pressable>
           </View>
         </View>
@@ -85,13 +83,11 @@ export const QRScreen = ({ navigation }) => {
   }
 
   return (
-    <View style={appStyles.container}>
-      <View style={[appStyles.card, { alignItems: "center" }]}>
+    <View style={styles.container}>
+      <View style={[styles.card, { alignItems: "center" }]}>
         <MaterialCommunityIcons name="qrcode" size={40} color="#e6eef8" />
-        <Text style={[appStyles.title, { marginTop: 8 }]}>Your QR Code</Text>
-        <Text
-          style={[appStyles.subtitle, { textAlign: "center", marginTop: 8 }]}
-        >
+        <Text style={[styles.title, { marginTop: 8 }]}>Your QR Code</Text>
+        <Text style={[styles.subtitle, { textAlign: "center", marginTop: 8 }]}>
           Share this QR to let people contact you safely.
         </Text>
 
@@ -116,9 +112,7 @@ export const QRScreen = ({ navigation }) => {
           />
         </View>
 
-        <Text
-          style={[appStyles.subtitle, { textAlign: "center", marginTop: 10 }]}
-        >
+        <Text style={[styles.subtitle, { textAlign: "center", marginTop: 10 }]}>
           Digital Contact
         </Text>
       </View>

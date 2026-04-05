@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import { styles } from "../../styles/theme";
+import { styles } from "../../styles";
 
 export const FeatureCard = ({ title, description }) => {
   return (

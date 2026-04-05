@@ -3,7 +3,7 @@ import { Alert, Pressable, ScrollView, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import QRCode from "react-native-qrcode-svg";
 
-import { appStyles, colors } from "../styles";
+import { styles, theme } from "../styles";
 import {
   buildUserQrPayload,
   maskNumber,
@@ -80,25 +80,25 @@ export const ProfileScreen = ({ navigation }) => {
 
   return (
     <ScrollView
-      style={appStyles.container}
+      style={styles.container}
       contentContainerStyle={{ paddingBottom: 20 }}
     >
-      <View style={appStyles.card}>
-        <Text style={appStyles.title}>Profile</Text>
+      <View style={styles.card}>
+        <Text style={styles.title}>Profile</Text>
 
         <View style={{ marginTop: 12 }}>
           <Text
             style={[
-              appStyles.subtitle,
-              { fontSize: 13, fontWeight: "700", color: colors.text },
+              styles.subtitle,
+              { fontSize: 13, fontWeight: "700", color: theme.colors.text },
             ]}
           >
             Full Name
           </Text>
           <Text
             style={[
-              appStyles.subtitle,
-              { fontSize: 14, marginTop: 6, color: colors.text },
+              styles.subtitle,
+              { fontSize: 14, marginTop: 6, color: theme.colors.text },
             ]}
           >
             {fullName}
@@ -108,34 +108,34 @@ export const ProfileScreen = ({ navigation }) => {
         <View style={{ marginTop: 14 }}>
           <Text
             style={[
-              appStyles.subtitle,
-              { fontSize: 13, fontWeight: "700", color: colors.text },
+              styles.subtitle,
+              { fontSize: 13, fontWeight: "700", color: theme.colors.text },
             ]}
           >
             Contact Number
           </Text>
-          <View style={[appStyles.row, { marginTop: 6, alignItems: "center" }]}>
+          <View style={[styles.row, { marginTop: 6, alignItems: "center" }]}>
             <Text
               style={[
-                appStyles.subtitle,
-                { flex: 1, fontSize: 14, color: colors.text },
+                styles.subtitle,
+                { flex: 1, fontSize: 14, color: theme.colors.text },
               ]}
             >
               {maskedContactNumber}
             </Text>
             <Pressable
               style={[
-                appStyles.button,
+                styles.button,
                 {
-                  backgroundColor: colors.success,
+                  backgroundColor: theme.colors.success,
                   paddingVertical: 8,
                   minWidth: 74,
                 },
               ]}
               onPress={() => handleInAppCall("Contact", contactNumber)}
             >
-              <Ionicons name="call" size={14} color="#fff" />
-              <Text style={appStyles.buttonText}>Call</Text>
+              <Ionicons name="call" size={14} color={theme.colors.onSuccess} />
+              <Text style={styles.buttonText}>Call</Text>
             </Pressable>
           </View>
         </View>
@@ -143,34 +143,34 @@ export const ProfileScreen = ({ navigation }) => {
         <View style={{ marginTop: 14 }}>
           <Text
             style={[
-              appStyles.subtitle,
-              { fontSize: 13, fontWeight: "700", color: colors.text },
+              styles.subtitle,
+              { fontSize: 13, fontWeight: "700", color: theme.colors.text },
             ]}
           >
             Emergency Contact Number
           </Text>
-          <View style={[appStyles.row, { marginTop: 6, alignItems: "center" }]}>
+          <View style={[styles.row, { marginTop: 6, alignItems: "center" }]}>
             <Text
               style={[
-                appStyles.subtitle,
-                { flex: 1, fontSize: 14, color: colors.text },
+                styles.subtitle,
+                { flex: 1, fontSize: 14, color: theme.colors.text },
               ]}
             >
               {maskedEmergencyNumber}
             </Text>
             <Pressable
               style={[
-                appStyles.button,
+                styles.button,
                 {
-                  backgroundColor: "#2563eb",
+                  backgroundColor: theme.colors.primary,
                   paddingVertical: 8,
                   minWidth: 74,
                 },
               ]}
               onPress={() => handleInAppCall("Emergency", emergencyNumber)}
             >
-              <Ionicons name="call" size={14} color="#fff" />
-              <Text style={appStyles.buttonText}>Call</Text>
+              <Ionicons name="call" size={14} color={theme.colors.onPrimary} />
+              <Text style={styles.buttonText}>Call</Text>
             </Pressable>
           </View>
         </View>
@@ -178,16 +178,20 @@ export const ProfileScreen = ({ navigation }) => {
         <View style={{ marginTop: 14 }}>
           <Text
             style={[
-              appStyles.subtitle,
-              { fontSize: 13, fontWeight: "700", color: colors.text },
+              styles.subtitle,
+              {
+                fontSize: 13,
+                fontWeight: "700",
+                color: theme.colors.onSurface,
+              },
             ]}
           >
             Email ID
           </Text>
           <Text
             style={[
-              appStyles.subtitle,
-              { fontSize: 14, marginTop: 6, color: colors.text },
+              styles.subtitle,
+              { fontSize: 14, marginTop: 6, color: theme.colors.onSurface },
             ]}
           >
             {email}
@@ -195,8 +199,8 @@ export const ProfileScreen = ({ navigation }) => {
         </View>
       </View>
 
-      <View style={[appStyles.card, { alignItems: "center" }]}>
-        <Text style={[appStyles.subtitle, { marginBottom: 10, fontSize: 13 }]}>
+      <View style={[styles.card, { alignItems: "center" }]}>
+        <Text style={[styles.subtitle, { marginBottom: 10, fontSize: 13 }]}>
           Generated QR Code
         </Text>
         {hasValidQr ? (
@@ -221,44 +225,53 @@ export const ProfileScreen = ({ navigation }) => {
               padding: 12,
             }}
           >
-            <Text style={[appStyles.subtitle, { marginTop: 0 }]}>
+            <Text
+              style={[
+                styles.subtitle,
+                { marginTop: 0, color: theme.colors.onSurface },
+              ]}
+            >
               QR unavailable: full name and contact number are required.
             </Text>
           </View>
         )}
         <Pressable
           style={[
-            appStyles.button,
+            styles.button,
             {
               marginTop: 14,
-              backgroundColor: hasValidQr ? colors.primary : "#334155",
+              backgroundColor: hasValidQr ? theme.colors.primary : "#334155",
               width: "100%",
             },
           ]}
           onPress={handleDownloadQr}
           disabled={!hasValidQr}
         >
-          <Ionicons name="download" size={16} color="#fff" />
-          <Text style={appStyles.buttonText}>Download QR</Text>
+          <Ionicons name="download" size={16} color={theme.colors.onPrimary} />
+          <Text style={styles.buttonText}>Download QR</Text>
         </Pressable>
       </View>
 
       <Pressable
         style={[
-          appStyles.button,
-          { marginTop: 10, backgroundColor: "#ef4444" },
+          styles.button,
+          { marginTop: 10, backgroundColor: theme.colors.errorContainer },
         ]}
         onPress={handleLogout}
       >
-        <Ionicons name="log-out" size={14} color="#fff" />
-        <Text style={appStyles.buttonText}>Logout</Text>
+        <Ionicons name="log-out" size={14} color={theme.colors.onError} />
+        <Text style={styles.buttonText}>Logout</Text>
       </Pressable>
 
       <View style={{ alignItems: "center", marginTop: 14 }}>
-        <Text style={{ color: colors.text, fontSize: 14, fontWeight: "700" }}>
+        <Text
+          style={{ color: theme.colors.text, fontSize: 14, fontWeight: "700" }}
+        >
           Scanner Book
         </Text>
-        <Text style={{ color: colors.subtext, fontSize: 12, marginTop: 3 }}>
+        <Text
+          style={{ color: theme.colors.subtext, fontSize: 12, marginTop: 3 }}
+        >
           Scan. Connect. Help.
         </Text>
       </View>

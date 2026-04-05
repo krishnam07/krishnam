@@ -3,7 +3,7 @@ import { Alert, Pressable, Text, View } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { CameraView, useCameraPermissions } from "expo-camera";
 
-import { appStyles, colors } from "../styles";
+import { styles, theme } from "../styles";
 
 export const ScannerScreen = () => {
   const [permission, requestPermission] = useCameraPermissions();
@@ -20,11 +20,11 @@ export const ScannerScreen = () => {
 
   if (!permission) {
     return (
-      <View style={appStyles.container}>
-        <View style={[appStyles.card, { alignItems: "center" }]}>
-          <Text style={appStyles.title}>Scanner</Text>
+      <View style={styles.container}>
+        <View style={[styles.card, { alignItems: "center" }]}>
+          <Text style={styles.title}>Scanner</Text>
           <Text
-            style={[appStyles.subtitle, { textAlign: "center", marginTop: 8 }]}
+            style={[styles.subtitle, { textAlign: "center", marginTop: 8 }]}
           >
             Checking camera permission...
           </Text>
@@ -35,30 +35,30 @@ export const ScannerScreen = () => {
 
   if (!permission.granted) {
     return (
-      <View style={appStyles.container}>
-        <View style={[appStyles.card, { alignItems: "center" }]}>
+      <View style={styles.container}>
+        <View style={[styles.card, { alignItems: "center" }]}>
           <MaterialCommunityIcons
             name="camera-lock-outline"
             size={72}
             color="#e6eef8"
           />
-          <Text style={[appStyles.title, { marginTop: 8 }]}>
+          <Text style={[styles.title, { marginTop: 8 }]}>
             Camera Permission Needed
           </Text>
           <Text
-            style={[appStyles.subtitle, { textAlign: "center", marginTop: 8 }]}
+            style={[styles.subtitle, { textAlign: "center", marginTop: 8 }]}
           >
             Allow camera access to scan QR codes.
           </Text>
           <Pressable
             style={[
-              appStyles.button,
-              { marginTop: 14, backgroundColor: colors.primary },
+              styles.button,
+              { marginTop: 14, backgroundColor: theme.colors.primary },
             ]}
             onPress={requestPermission}
           >
             <MaterialCommunityIcons name="camera" size={16} color="#fff" />
-            <Text style={appStyles.buttonText}>Allow Camera</Text>
+            <Text style={styles.buttonText}>Allow Camera</Text>
           </Pressable>
         </View>
       </View>
@@ -97,9 +97,9 @@ export const ScannerScreen = () => {
         <View style={{ position: "absolute", left: 16, right: 16, bottom: 24 }}>
           <Pressable
             style={[
-              appStyles.button,
+              styles.button,
               {
-                backgroundColor: colors.success,
+                backgroundColor: theme.colors.tertiary,
                 paddingVertical: 12,
                 borderRadius: 999,
               },
@@ -107,7 +107,7 @@ export const ScannerScreen = () => {
             onPress={() => setScanned(false)}
           >
             <MaterialCommunityIcons name="qrcode-scan" size={16} color="#fff" />
-            <Text style={appStyles.buttonText}>Tap to Scan Again</Text>
+            <Text style={styles.buttonText}>Tap to Scan Again</Text>
           </Pressable>
         </View>
       ) : null}

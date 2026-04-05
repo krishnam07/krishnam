@@ -1,5 +1,5 @@
 import { View, TextInput } from "react-native";
-import { theme } from "./../../styles";
+import { theme } from "../../styles";
 
 export const InputField = () => {
   return (
