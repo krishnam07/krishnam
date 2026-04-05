@@ -2,10 +2,13 @@ import React from "react";
 import { View, Text, Pressable } from "react-native";
 import { ArrowRight } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { useNavigation } from "@react-navigation/native";
 
 import { styles, theme } from "../../styles";
 
 export const CTASection = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.ctaWrapper}>
       <Pressable
@@ -30,7 +33,10 @@ export const CTASection = () => {
             Join thousands who trust us with their everyday essentials.
           </Text>
 
-          <Pressable style={styles.ctaButton}>
+          <Pressable
+            style={styles.ctaButton}
+            onPress={() => navigation.navigate("Register")}
+          >
             <Text style={styles.ctaButtonText}>Create Free Account</Text>
             <ArrowRight size={20} color={theme.colors.primary} />
           </Pressable>

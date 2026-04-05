@@ -397,4 +397,88 @@ export const styles = StyleSheet.create({
     color: theme.colors.onSurfaceVariant,
     opacity: 0.6,
   },
+
+  signupContent: {
+    padding: theme.spacing.lg,
+    gap: theme.spacing.xl,
+  },
+
+  signupHeader: {
+    gap: theme.spacing.sm,
+  },
+
+  signupTitle: {
+    ...typography.displayLg,
+    fontSize: 36,
+    color: theme.colors.onSurface,
+  },
+
+  signupSubtitle: {
+    ...typography.bodyLg,
+    color: theme.colors.onSurfaceVariant,
+  },
+
+  /* FORM LAYERING */
+  formWrapper: {
+    backgroundColor: theme.colors.surfaceLow,
+    padding: theme.spacing.sm,
+    borderRadius: theme.radius.lg,
+  },
+
+  formCard: {
+    backgroundColor: theme.colors.surfaceLowest,
+    padding: theme.spacing.lg,
+    borderRadius: theme.radius.lg,
+    gap: theme.spacing.lg,
+  },
+
+  /* INPUT SYSTEM */
+  inputGroup: {
+    gap: theme.spacing.xs,
+  },
+
+  label: {
+    ...typography.labelMd,
+    color: theme.colors.onSurfaceVariant,
+  },
+
+  input: {
+    backgroundColor: theme.colors.surfaceHighest,
+    borderRadius: theme.radius.lg,
+    paddingHorizontal: theme.spacing.md,
+    paddingVertical: theme.spacing.sm,
+    color: theme.colors.onSurface,
+  },
+
+  /* SWITCH */
+  switchRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+
+  forgotWrapper: {
+    alignItems: "flex-end",
+    marginTop: -8,
+  },
+
+  forgotText: {
+    ...typography.labelMd,
+    color: theme.colors.primary,
+  },
+
+  signupLinkWrapper: {
+    alignItems: "center",
+    gap: theme.spacing.xs,
+  },
+
+  signupText: {
+    ...typography.bodyLg,
+    color: theme.colors.onSurfaceVariant,
+  },
+
+  signupLink: {
+    ...typography.titleMd,
+    color: theme.colors.primary,
+  },
 });
