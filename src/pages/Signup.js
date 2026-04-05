@@ -14,6 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { styles, theme } from "../styles";
 import { setSession, api, API_BASE_URL } from "../services";
+import { GradientButton } from "../components";
 
 export const Signup = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -246,20 +247,7 @@ export const Signup = ({ navigation }) => {
             mobile verification.
           </Text>
 
-          <Pressable
-            style={[
-              styles.button,
-              { backgroundColor: theme.colors.errorContainer },
-            ]}
-            onPress={handleRegister}
-          >
-            <Ionicons
-              name="person-add"
-              size={14}
-              color={theme.colors.onError}
-            />
-            <Text style={styles.buttonText}>Create Account</Text>
-          </Pressable>
+          <GradientButton title={"Create Account"} onPress={handleRegister} />
         </View>
       </ScrollView>
     </KeyboardAvoidingView>

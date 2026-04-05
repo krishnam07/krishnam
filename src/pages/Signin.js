@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { styles, theme } from "../styles";
 
 import { api, setSession } from "../services";
+import { GradientButton } from "../components";
 
 export const Signin = ({ navigation }) => {
   const [identifier, setIdentifier] = useState("");
@@ -50,13 +51,7 @@ export const Signin = ({ navigation }) => {
           secureTextEntry
         />
 
-        <Pressable
-          style={[styles.button, { backgroundColor: theme.colors.primary }]}
-          onPress={handleLogin}
-        >
-          <Ionicons name="log-in" size={14} color="#fff" />
-          <Text style={styles.buttonText}>Login</Text>
-        </Pressable>
+        <GradientButton title={"Login"} onPress={handleLogin} />
       </View>
     </View>
   );

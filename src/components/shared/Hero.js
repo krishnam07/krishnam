@@ -1,9 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import { Image, Text, View } from "react-native";
 
 import { styles, theme } from "../../styles";
 import { GradientButton, SecondaryButton } from "../core";
 
 export const Hero = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.hero}>
       <Text style={styles.heading}>
@@ -16,7 +18,10 @@ export const Hero = () => {
       </Text>
 
       <View style={styles.buttonRow}>
-        <GradientButton title="Get Started" />
+        <GradientButton
+          title="Get Started"
+          onPress={() => navigation.navigate("Register")}
+        />
         <SecondaryButton title="How it Works" />
       </View>
 

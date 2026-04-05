@@ -4,9 +4,9 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import { styles, theme } from "../../styles";
 
-export const GradientButton = ({ title }) => {
+export const GradientButton = ({ title, onPress }) => {
   return (
-    <Pressable>
+    <Pressable onPress={onPress}>
       <LinearGradient
         colors={[theme.colors.primary, theme.colors.primaryContainer]}
         start={{ x: 0, y: 0 }}
